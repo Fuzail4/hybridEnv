@@ -27,7 +27,6 @@ resource "azurerm_app_service_plan" "app_plan1000" {
   name                = "app-plan1000"
   location            = azurerm_resource_group.app_grp.location
   resource_group_name = azurerm_resource_group.app_grp.name
-  os_type             = "Linux"
   sku {
     tier = "Basic"
     size = "B1"
