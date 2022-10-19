@@ -22,7 +22,7 @@ data "azurerm_key_vault" "MySecreat" {
   resource_group_name = "East US"
 }
 data "azurerm_key_vault_secret" "DBpassword" {
-  name         = "DBpassword"
+  name         = "DBpassword2"
   key_vault_id = data.azurerm_key_vault.existing.MySecreat.id
 }
 
@@ -56,7 +56,7 @@ resource "azurerm_sql_server" "app_server_6008089" {
   location                     = "North Europe"  
   version             = "12.0"
   administrator_login          = "sqladmin"
-  administrator_login_password = data.azurerm_key_vault_secret.DBpassword.value
+  administrator_login_password = data.azurerm_key_vault_secret.DBpassword2.value
 }
 
 resource "azurerm_sql_database" "app_db" {
