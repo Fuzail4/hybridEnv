@@ -19,7 +19,7 @@ locals {
 
 data "azurerm_key_vault" "MySecreat" {
   name                = "MySecreat"
-  resource_group_name = "East US"
+  resource_group_name = "terraformRG"
 }
 data "azurerm_key_vault_secret" "DBpassword" {
   name         = "DBpassword2"
