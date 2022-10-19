@@ -24,6 +24,7 @@ data "azurerm_key_vault" "MySecreat" {
 data "azurerm_key_vault_secret" "DBpassword" {
   name         = "DBpassword2"
   key_vault_id = data.azurerm_key_vault.MySecreat.id
+  depends_on=[azurerm_key_vault.MySecreat]
 }
 
 resource "azurerm_resource_group" "app_grp"{
@@ -57,6 +58,7 @@ resource "azurerm_sql_server" "app_server_6008089" {
   version             = "12.0"
   administrator_login          = "sqladmin"
   administrator_login_password = data.azurerm_key_vault_secret.DBpassword2.value
+  depends_on=[azurerm_key_vault_secret.DBpassword]
 }
 
 resource "azurerm_sql_database" "app_db" {
