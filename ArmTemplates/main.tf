@@ -23,7 +23,7 @@ data "azurerm_key_vault" "MySecreat" {
 }
 data "azurerm_key_vault_secret" "DBpassword" {
   name         = "DBpassword2"
-  key_vault_id = data.azurerm_key_vault.existing.MySecreat.id
+  key_vault_id = data.azurerm_key_vault.MySecreat.id
 }
 
 resource "azurerm_resource_group" "app_grp"{
