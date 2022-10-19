@@ -16,6 +16,7 @@ locals {
   resource_group="app-grp"
   location="North Europe"  
 }
+data "azurerm_client_config" "current" {}
 
 data "azurerm_key_vault" "MySecreat" {
   name                = "MySecreat"
