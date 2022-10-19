@@ -17,6 +17,14 @@ locals {
   location="North Europe"  
 }
 
+data "azurerm_key_vault" "MySecreat" {
+  name                = "MySecreat"
+  resource_group_name = "East US"
+}
+data "azurerm_key_vault_secret" "DBpassword" {
+  name         = "DBpassword"
+  key_vault_id = data.azurerm_key_vault.existing.MySecreat.id
+}
 
 resource "azurerm_resource_group" "app_grp"{
   name=local.resource_group
@@ -48,7 +56,7 @@ resource "azurerm_sql_server" "app_server_6008089" {
   location                     = "North Europe"  
   version             = "12.0"
   administrator_login          = "sqladmin"
-  administrator_login_password = "Azure123"
+  administrator_login_password = data.azurerm_key_vault_secret.DBpassword.value
 }
 
 resource "azurerm_sql_database" "app_db" {
