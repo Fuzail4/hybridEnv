@@ -22,7 +22,7 @@ locals {
   web_app_name="webapp5539050"
   sql_server_name="appserver6008089"
   sql_db_name="appdb"
-
+  sql_admin_user_name="sqladmin"
 
 }
 data "azurerm_client_config" "current" {}
@@ -65,7 +65,7 @@ resource "azurerm_sql_server" "app_server" {
   resource_group_name          = azurerm_resource_group.app_grp.name
   location                     = "North Europe"  
   version             = "12.0"
-  administrator_login          = "sqladmin"
+  administrator_login          = local.sql_admin_user_name
   administrator_login_password = data.azurerm_key_vault_secret.DBpassword2.value
 }
 
