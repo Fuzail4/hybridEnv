@@ -2,9 +2,9 @@
 locals {
   resource_group="app-grp"
   location="North Europe" 
-  key_vault_name="MySecreat" 
+  key_vault_name="Secrets" 
   key_vault_RG="terraformRG"
-  key_vault_secreat_name="DBpassword2"
+  key_vault_secreat_name="DBpassword"
   ASP_name="app-plan1000"
   web_app_name="webapp5539050"
   sql_server_name="appserver6008089"
