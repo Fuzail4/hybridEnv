@@ -53,7 +53,7 @@ resource "azurerm_sql_server" "app_server" {
   location                     = "North Europe"  
   version             = "12.0"
   administrator_login          = local.sql_admin_user_name
-  administrator_login_password = Azure123
+  administrator_login_password = "Azure123"
 }
 
 resource "azurerm_sql_database" "app_db" {
